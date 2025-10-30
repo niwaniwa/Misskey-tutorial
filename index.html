@@ -1,303 +1,422 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Misskeyスタートガイド | Misskey Compass</title>
-  <meta name="description" content="Misskeyとは何か、何ができるか、どのサーバーを選べばよいかをまとめたスタートガイド。新規登録可能なサーバーを探し、自分に合う場所を見つけよう。">
+  <title>Misskey Compass | バーチャルケモ耳リレー対応ガイド</title>
+  <meta name="description" content="バーチャルケモ耳リレーに登録しているMisskeyサーバーの中から、新規登録が可能なインスタンスだけを厳選したスタートガイド。ステップごとの案内と最新サーバー情報をまとめてチェックできます。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['\"Noto Sans JP\"', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              light: '#5EEAD4',
+              DEFAULT: '#2DD4BF',
+              dark: '#14B8A6'
+            }
+          },
+          backgroundImage: {
+            'night-gradient': 'radial-gradient(circle at top, rgba(45,212,191,0.25), transparent 55%), linear-gradient(140deg, #0f172a 0%, #1e1b4b 55%, #020617 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      #stepContent {
+        transition: none !important;
+        transform: none !important;
+      }
+    }
+  </style>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <p class="brand">Misskey Compass</p>
-      <nav class="nav">
-        <a href="#about">Misskeyとは</a>
-        <a href="#features">できること</a>
-        <a href="#servers">サーバー一覧</a>
-        <a href="#flow">始め方</a>
-        <a href="#faq">FAQ</a>
+<body class="min-h-screen bg-night-gradient text-slate-100 font-sans">
+  <header class="sticky top-0 z-20 backdrop-blur border-b border-white/10 bg-slate-950/80">
+    <div class="mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="#top" class="text-xl font-semibold tracking-tight flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/15 text-brand">⛵</span>
+        Misskey Compass
+      </a>
+      <nav class="flex flex-wrap items-center gap-5 text-sm font-medium text-slate-300">
+        <a class="hover:text-white transition" href="#about">Misskeyとは</a>
+        <a class="hover:text-white transition" href="#journey">始め方</a>
+        <a class="hover:text-white transition" href="#servers">サーバー一覧</a>
+        <a class="hover:text-white transition" href="#policy">ポリシー</a>
       </nav>
-      <a class="cta" href="#servers">登録できるサーバーを探す</a>
+      <a href="#servers" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-brand/20 transition hover:bg-brand-dark">
+        今すぐ登録できるサーバーを見る
+      </a>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1>Misskeyを始めるためのコンパス</h1>
-          <p>Misskeyは分散型SNS。あなたの好みに合ったサーバーで、自由にコミュニティを楽しめます。Misskey Compassは、Misskeyの基本を学び、登録可能なサーバーを比較し、安心して第一歩を踏み出すためのガイドです。</p>
-          <div class="hero-actions">
-            <a class="primary" href="#servers">サーバーを比較する</a>
-            <a class="secondary" href="#about">Misskeyについて知る</a>
+  <main id="top" class="relative">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.25),transparent_45%)]"></div>
+      <div class="mx-auto max-w-6xl px-6 py-20 lg:py-24 relative">
+        <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+          <div class="space-y-6">
+            <p class="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-xs font-semibold text-brand uppercase tracking-[0.2em]">Virtual Kemomimi Relay</p>
+            <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+              バーチャルケモ耳リレー向け <br class="hidden md:block">Misskeyサーバーのスタート地点
+            </h1>
+            <p class="text-lg text-slate-300">
+              Misskey Compassは、バーチャルケモ耳リレーに参加しているインスタンスの中から、<span class="text-brand-light font-semibold">今月新規登録を受け付けているサーバー</span>だけをピックアップ。Misskeyの基礎理解から、登録までの流れ、候補サーバーの比較までをこのページ一つで完結させます。
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#journey" class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20">
+                手順を確認する
+                <span aria-hidden="true">→</span>
+              </a>
+              <a href="#servers" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-white/40">
+                サーバー一覧へジャンプ
+              </a>
+            </div>
+            <dl class="grid gap-4 sm:grid-cols-3 text-sm text-slate-300">
+              <div>
+                <dt class="font-semibold text-white">今月の掲載サーバー</dt>
+                <dd id="serverCount" class="text-2xl font-semibold text-brand-light">--</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-white">最終チェック</dt>
+                <dd id="lastUpdated" class="text-2xl font-semibold text-brand-light">--</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-white">対象コミュニティ</dt>
+                <dd class="text-2xl font-semibold text-brand-light">バーチャルケモ耳リレー</dd>
+              </div>
+            </dl>
           </div>
-        </div>
-        <div class="hero-card">
-          <p class="hero-card__title">今週のおすすめ</p>
-          <ul class="hero-card__list">
-            <li>
-              <span class="server-name">misskey.io</span>
-              <span class="server-tag">大型・多言語</span>
-            </li>
-            <li>
-              <span class="server-name">knzk.me</span>
-              <span class="server-tag">日本語・雑談</span>
-            </li>
-            <li>
-              <span class="server-name">mimumedon.com</span>
-              <span class="server-tag">創作・イラスト</span>
-            </li>
-          </ul>
-          <p class="hero-card__note">登録状況はサーバーにより変わります。最新の募集状況を確認しましょう。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2>Misskeyとは？</h2>
-        <div class="grid two-column">
-          <div>
-            <p>Misskeyは、ActivityPubという共通プロトコルでつながる分散型SNSです。中央集権的な管理者が存在しないため、さまざまなテーマや雰囲気のサーバー（インスタンス）が独立して運営されています。</p>
-            <p>サーバー同士はゆるやかにつながっており、どこに登録しても他の多くのユーザーと交流できます。自分の興味や価値観に合ったサーバーを選ぶことで、より快適なSNS体験が得られます。</p>
-          </div>
-          <div class="feature-cards">
-            <article class="feature-card">
-              <h3>分散型</h3>
-              <p>サーバーごとにルールや文化が異なります。自分に合った居場所を選べる柔軟性が魅力です。</p>
-            </article>
-            <article class="feature-card">
-              <h3>カスタマイズ自由</h3>
-              <p>テーマ変更やウィジェット配置など、インターフェースを自分好みに整えられます。</p>
-            </article>
-            <article class="feature-card">
-              <h3>オープンソース</h3>
-              <p>Misskeyはオープンソースで開発されています。透明性が高く、世界中の開発者が改善に貢献しています。</p>
-            </article>
+          <div class="relative">
+            <div class="absolute -top-20 -right-24 h-56 w-56 rounded-full bg-brand/20 blur-3xl"></div>
+            <div class="relative rounded-3xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl shadow-brand/10 backdrop-blur">
+              <h2 class="text-lg font-semibold text-white">今月の注目サーバー</h2>
+              <p class="mt-1 text-sm text-slate-300">コミュニティの雰囲気を掴むためのサンプルです。詳細は下部の一覧をご確認ください。</p>
+              <ul id="featuredList" class="mt-6 space-y-4">
+                <li class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-sm text-slate-400">読み込み中...</p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="section section--alt">
-      <div class="container">
-        <h2>Misskeyでできること</h2>
-        <div class="grid three-column">
-          <article class="highlight">
-            <h3>ノート投稿とリアクション</h3>
-            <p>文字・画像・動画・アンケートなど多彩な投稿が可能。リアクションはカスタム絵文字にも対応しています。</p>
+    <section id="about" class="border-y border-white/10 bg-slate-950/60 py-16">
+      <div class="mx-auto max-w-5xl px-6 space-y-10">
+        <div class="max-w-3xl space-y-4">
+          <h2 class="text-3xl font-semibold text-white">Misskeyとは？</h2>
+          <p class="text-base leading-relaxed text-slate-300">
+            MisskeyはActivityPubを採用したオープンソースの分散型SNSです。サーバーごとに独自の文化やルールが育まれており、参加するインスタンスによってコミュニケーションの雰囲気が大きく変わります。どこに登録しても他の多くのサーバーと連合できるため、<span class="text-white font-medium">自分に合ったサーバーを選ぶこと</span>が何より大切です。
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg">
+            <h3 class="text-lg font-semibold text-white">分散型で自由な選択</h3>
+            <p class="mt-3 text-sm text-slate-300">中央管理者がいないため、テーマやルールに合わせた自由な運営が可能。バーチャルケモ耳リレーでも多彩なサーバーが活動しています。</p>
           </article>
-          <article class="highlight">
-            <h3>タイムラインの使い分け</h3>
-            <p>ホーム、ローカル、ソーシャル、グローバルなどのタイムラインで情報の流れを調整できます。</p>
+          <article class="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg">
+            <h3 class="text-lg font-semibold text-white">柔軟なカスタマイズ</h3>
+            <p class="mt-3 text-sm text-slate-300">ノート投稿やリアクション、チャンネル機能などを自分好みに設定できます。テーマ変更でケモ耳リレーらしい装飾も簡単です。</p>
           </article>
-          <article class="highlight">
-            <h3>リストとチャンネル</h3>
-            <p>特定ユーザーをまとめたリストやトピックごとのチャンネルで、興味のある話題を逃しません。</p>
-          </article>
-          <article class="highlight">
-            <h3>ドライブ機能</h3>
-            <p>画像やファイルをクラウドのように管理できます。フォルダー整理や公開設定も柔軟です。</p>
-          </article>
-          <article class="highlight">
-            <h3>カスタムテーマ</h3>
-            <p>CSSを直接編集することなく、プリセットやテーマ共有で外観を一瞬で切り替えられます。</p>
-          </article>
-          <article class="highlight">
-            <h3>BotやAPI連携</h3>
-            <p>WebhookやAPIを使って自動投稿や通知連携も実現できます。</p>
+          <article class="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg">
+            <h3 class="text-lg font-semibold text-white">コミュニティ主導の発展</h3>
+            <p class="mt-3 text-sm text-slate-300">オープンソースで透明性が高く、コミュニティからの改善提案が次々に取り入れられています。独自の遊び方も生まれやすい環境です。</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="servers" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <h2>新規登録が可能なサーバー</h2>
-          <p>Misskey Compassに掲載されるのは、現在新規登録受付中のサーバーのみ。運営ポリシーや雰囲気、参加条件を比較しながら選びましょう。</p>
-        </div>
-
-        <div class="filters">
-          <div class="filter-group">
-            <label for="theme-filter">テーマ</label>
-            <select id="theme-filter" name="theme">
-              <option>すべて</option>
-              <option>雑談</option>
-              <option>創作</option>
-              <option>技術</option>
-              <option>初心者歓迎</option>
-            </select>
+    <section id="journey" class="py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
+          <div class="lg:w-1/3 space-y-4">
+            <h2 class="text-3xl font-semibold text-white">Misskeyを始めるステップ</h2>
+            <p class="text-sm text-slate-300">それぞれのステップを順番に確認しながら、あなたに合うサーバーを見つけて登録まで進めましょう。各ステップはアニメーション付きで切り替わります。</p>
+            <div class="rounded-3xl border border-brand/30 bg-brand/10 p-4 text-xs text-brand-light">
+              <p>💡 次へボタンで進むと、チェックリストとヒントが更新されます。戻って何度でも確認できます。</p>
+            </div>
           </div>
-          <div class="filter-group">
-            <label for="lang-filter">主な言語</label>
-            <select id="lang-filter" name="language">
-              <option>すべて</option>
-              <option>日本語</option>
-              <option>英語</option>
-              <option>多言語</option>
-            </select>
+          <div class="lg:w-2/3">
+            <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-xl">
+              <div id="stepContent" class="transition-all duration-300 ease-in-out">
+                <p class="text-sm text-slate-300">読み込み中...</p>
+              </div>
+              <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+                <button id="prevStep" type="button" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/35 disabled:opacity-40 disabled:cursor-not-allowed">
+                  ← 前のステップ
+                </button>
+                <div id="stepIndicators" class="flex items-center gap-2"></div>
+                <button id="nextStep" type="button" class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-brand-dark">
+                  次のステップ →
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="filter-group">
-            <label for="scale-filter">規模</label>
-            <select id="scale-filter" name="scale">
-              <option>すべて</option>
-              <option>小規模 (&lt; 1,000人)</option>
-              <option>中規模 (1,000〜10,000人)</option>
-              <option>大規模 (&gt; 10,000人)</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="server-table" role="table" aria-label="登録可能なMisskeyサーバー">
-          <div class="server-table__header" role="row">
-            <span role="columnheader">サーバー名</span>
-            <span role="columnheader">テーマ</span>
-            <span role="columnheader">主な言語</span>
-            <span role="columnheader">規模</span>
-            <span role="columnheader">特徴</span>
-            <span role="columnheader">登録状況</span>
-          </div>
-          <div class="server-table__row" role="row">
-            <span role="cell" data-label="サーバー名"><strong>misskey.io</strong></span>
-            <span role="cell" data-label="テーマ">総合・多様</span>
-            <span role="cell" data-label="主な言語">多言語</span>
-            <span role="cell" data-label="規模">大規模</span>
-            <span role="cell" data-label="特徴">公式開発者が運営する最も大きなサーバー。</span>
-            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
-          </div>
-          <div class="server-table__row" role="row">
-            <span role="cell" data-label="サーバー名"><strong>knzk.me</strong></span>
-            <span role="cell" data-label="テーマ">雑談・日常</span>
-            <span role="cell" data-label="主な言語">日本語</span>
-            <span role="cell" data-label="規模">中規模</span>
-            <span role="cell" data-label="特徴">日本語ユーザー中心、初心者歓迎。</span>
-            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
-          </div>
-          <div class="server-table__row" role="row">
-            <span role="cell" data-label="サーバー名"><strong>mimumedon.com</strong></span>
-            <span role="cell" data-label="テーマ">創作・イラスト</span>
-            <span role="cell" data-label="主な言語">日本語</span>
-            <span role="cell" data-label="規模">中規模</span>
-            <span role="cell" data-label="特徴">創作発表に強い、イベント多数。</span>
-            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
-          </div>
-          <div class="server-table__row" role="row">
-            <span role="cell" data-label="サーバー名"><strong>fedibird.com</strong></span>
-            <span role="cell" data-label="テーマ">雑談・技術</span>
-            <span role="cell" data-label="主な言語">日本語</span>
-            <span role="cell" data-label="規模">大規模</span>
-            <span role="cell" data-label="特徴">高機能・コミュニティ主導で改良が活発。</span>
-            <span role="cell" data-label="登録状況"><span class="badge badge--wait">順番待ち</span></span>
-          </div>
-          <div class="server-table__row" role="row">
-            <span role="cell" data-label="サーバー名"><strong>artkey.jp</strong></span>
-            <span role="cell" data-label="テーマ">創作</span>
-            <span role="cell" data-label="主な言語">日本語</span>
-            <span role="cell" data-label="規模">小規模</span>
-            <span role="cell" data-label="特徴">少人数で落ち着いた創作共有。</span>
-            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
-          </div>
-        </div>
-
-        <div class="note">
-          <p>※ サーバーの募集状況は日々変わります。登録前に必ず公式サイトで最新情報を確認してください。</p>
         </div>
       </div>
     </section>
 
-    <section id="flow" class="section section--alt">
-      <div class="container">
-        <h2>登録までの流れ</h2>
-        <ol class="steps">
-          <li>
-            <h3>サーバーを選ぶ</h3>
-            <p>テーマやルール、参加条件をよく読み、安心して参加できるサーバーを選びましょう。</p>
-          </li>
-          <li>
-            <h3>ガイドラインを確認</h3>
-            <p>サーバーごとの利用規約とローカルルールを確認し、禁止事項やマナーを把握します。</p>
-          </li>
-          <li>
-            <h3>アカウントを作成</h3>
-            <p>登録フォームで必要事項を入力します。メール認証が必要な場合もあるので受信トレイを確認してください。</p>
-          </li>
-          <li>
-            <h3>初期設定を整える</h3>
-            <p>プロフィールやアイコン、テーマを設定して、自分の居場所を作りましょう。</p>
-          </li>
-          <li>
-            <h3>コミュニティに挨拶</h3>
-            <p>はじめましてノートを投稿して交流を始めましょう。リアクションで気軽にコミュニケーションできます。</p>
-          </li>
-        </ol>
+    <section id="servers" class="border-t border-white/10 bg-slate-950/60 py-20">
+      <div class="mx-auto max-w-6xl px-6 space-y-10">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="space-y-3">
+            <h2 class="text-3xl font-semibold text-white">今月登録できるサーバー</h2>
+            <p class="text-sm text-slate-300">バーチャルケモ耳リレーに掲載されているサーバーのうち、<span class="font-semibold text-white">今月新規登録フォームが開いている</span>ものだけを掲載しています。各サーバーの募集状況は変化するため、リンク先で最新情報をご確認ください。</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-slate-300">
+            <span class="inline-flex h-3 w-3 rounded-full bg-emerald-400"></span> 募集中
+            <span class="inline-flex h-3 w-3 rounded-full bg-amber-400"></span> 審査あり
+          </div>
+        </div>
+        <div id="serverList" class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-sm text-slate-300">サーバー情報を読み込み中です...</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container insights">
-        <div>
-          <h2>サーバー登録ポリシー</h2>
-          <ul>
-            <li>新規登録受付中であることを確認できるサーバーのみ掲載しています。</li>
-            <li>サーバーのルールや管理方針が明記されていること。</li>
-            <li>一定の稼働実績（連続稼働30日以上）があるサーバーを優先します。</li>
+    <section id="policy" class="py-16">
+      <div class="mx-auto max-w-5xl px-6 grid gap-8 md:grid-cols-2">
+        <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+          <h2 class="text-2xl font-semibold text-white">掲載ポリシー</h2>
+          <ul class="mt-4 space-y-3 text-sm text-slate-300 list-disc list-inside">
+            <li>バーチャルケモ耳リレーに公式登録され、今月の募集枠が公開されているサーバーのみ掲載します。</li>
+            <li>募集停止が確認されたサーバーは即時にリストから除外します。</li>
+            <li>公開情報・API・運営者からの告知をソースとしており、個人情報は取得しません。</li>
           </ul>
         </div>
-        <div>
-          <h2>収集データについて</h2>
-          <p>Misskey Compassでは、各サーバーの公式サイトやAPIで公開されている情報のみを使用します。個人情報の取得は行いません。</p>
-          <p>掲載内容に問題がある場合は、各サーバーの運営者からの申請でいつでも変更・削除が可能です。</p>
+        <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6 space-y-4">
+          <h2 class="text-2xl font-semibold text-white">お問い合わせ</h2>
+          <p class="text-sm text-slate-300">掲載内容の更新や修正依頼は、下記までご連絡ください。</p>
+          <ul class="space-y-2 text-sm text-brand-light">
+            <li><a class="hover:text-brand" href="mailto:hello@misskey-compass.example">hello@misskey-compass.example</a></li>
+            <li><a class="hover:text-brand" href="https://github.com/misskey-compass" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+          <p class="text-xs text-slate-400">掲載状況は月次でチェックし、必要に応じて臨時更新を行います。</p>
         </div>
-      </div>
-    </section>
-
-    <section id="faq" class="section section--alt">
-      <div class="container faq">
-        <h2>よくある質問</h2>
-        <details>
-          <summary>どのサーバーを選んでも他のサーバーのユーザーと話せますか？</summary>
-          <p>はい。MisskeyはActivityPubでつながっているため、基本的にどのサーバーでも他のサーバーのユーザーと相互に交流できます。ただし、一部のサーバーは連合を制限している場合があります。</p>
-        </details>
-        <details>
-          <summary>サーバーの乗り換えはできますか？</summary>
-          <p>可能です。データのエクスポート・インポート機能を使うことで、別サーバーへの移転に対応しています。ただし、相手先サーバーがデータ移行に対応している必要があります。</p>
-        </details>
-        <details>
-          <summary>登録が停止されているサーバーはどうなりますか？</summary>
-          <p>Misskey Compassでは、定期的に登録状況を確認し、受付を停止しているサーバーは自動的に掲載を休止します。募集再開のお知らせがあれば、即座にリストに反映します。</p>
-        </details>
-        <details>
-          <summary>未成年でも利用できますか？</summary>
-          <p>多くのサーバーで利用できますが、年齢制限を設けているところもあります。利用規約を必ず確認してください。</p>
-        </details>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div>
-        <p class="brand">Misskey Compass</p>
-        <p class="footer-text">Misskeyを始めたい人のための非公式ガイド。最新情報は各サーバーの告知をご確認ください。</p>
-      </div>
-      <div>
-        <p class="footer-heading">お問い合わせ</p>
-        <ul>
-          <li><a href="mailto:hello@misskey-compass.example">hello@misskey-compass.example</a></li>
-          <li><a href="https://github.com/misskey-compass" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer-heading">情報の更新について</p>
-        <p class="footer-text">掲載情報は週次で更新し、登録受付中のサーバーのみを紹介しています。掲載希望はお問い合わせフォームからお寄せください。</p>
-      </div>
-    </div>
-    <p class="footer-copy">&copy; 2024 Misskey Compass. All rights reserved.</p>
+  <footer class="border-t border-white/10 bg-slate-950/80 py-8 text-center text-xs text-slate-500">
+    <p>&copy; 2024 Misskey Compass. Virtual Kemomimi Relay Edition.</p>
   </footer>
+
+  <script>
+    const steps = [
+      {
+        title: '1. 自分の活動スタイルを洗い出す',
+        summary: '投稿頻度や好みの話題、交流したい相手像を具体的に整理しましょう。',
+        checklist: [
+          '日常雑談か創作発表か、主な用途を決める',
+          'ケモ耳リレーのどの企画に参加したいか書き出す',
+          '必要なコンテンツ警告や配慮事項があるか確認する'
+        ],
+        tip: 'サーバーのローカルタイムラインを覗いて、雰囲気が合いそうかを事前にチェックするのがおすすめです。'
+      },
+      {
+        title: '2. サーバールールと募集条件を確認',
+        summary: '各サーバーの募集要項には、年齢制限や参加条件、審査の有無などが記載されています。',
+        checklist: [
+          '募集ページで禁止事項と推奨事項を確認',
+          '審査フォームがある場合は回答準備をする',
+          '過去の告知やリレー日程をチェックして雰囲気を掴む'
+        ],
+        tip: '「審査あり」のサーバーは、自己紹介や活動実績を整理しておくとスムーズです。'
+      },
+      {
+        title: '3. アカウント登録と初期設定',
+        summary: 'フォームに必要情報を入力し、メール認証などの初期設定を完了させましょう。',
+        checklist: [
+          'アイコン・バナー・プロフィール文を準備',
+          '二要素認証やパスワードマネージャーを設定',
+          '最初の挨拶ノートで参加表明を行う'
+        ],
+        tip: 'プロフィールには、ケモ耳リレーでの活動予定や得意ジャンルを記載すると歓迎されやすくなります。'
+      },
+      {
+        title: '4. コミュニティと連携する',
+        summary: 'リレー参加者同士のチャンネルやハッシュタグに参加し、継続的な交流を楽しみましょう。',
+        checklist: [
+          'リレー用ハッシュタグやチャンネルをフォロー',
+          '週次イベントやボイスチャットの予定を確認',
+          '他サーバーとのクロス投稿・合作企画に挑戦'
+        ],
+        tip: '困ったときはサーバーのモデレーターに相談したり、Misskey公式ドキュメントを参照してみましょう。'
+      }
+    ];
+
+    const stepContent = document.getElementById('stepContent');
+    const stepIndicators = document.getElementById('stepIndicators');
+    const prevStepBtn = document.getElementById('prevStep');
+    const nextStepBtn = document.getElementById('nextStep');
+    let currentStep = 0;
+
+    stepContent.classList.add('transition-all', 'duration-300', 'ease-in-out');
+
+    const renderIndicators = () => {
+      stepIndicators.innerHTML = '';
+      steps.forEach((_, index) => {
+        const indicator = document.createElement('span');
+        indicator.className = `h-2.5 w-2.5 rounded-full transition ${index === currentStep ? 'bg-brand' : 'bg-white/20'}`;
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.addEventListener('click', () => updateStep(index));
+        indicator.classList.add('cursor-pointer');
+        stepIndicators.appendChild(indicator);
+      });
+    };
+
+    const renderStep = () => {
+      const step = steps[currentStep];
+      const stepHtml = `
+        <div class="space-y-5">
+          <p class="text-xs uppercase tracking-[0.3em] text-brand-light">Step ${currentStep + 1}</p>
+          <h3 class="text-2xl font-semibold text-white">${step.title}</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">${step.summary}</p>
+          <div>
+            <p class="text-xs font-semibold text-slate-200 mb-3">チェックポイント</p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              ${step.checklist.map(item => `<li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-brand"></span><span>${item}</span></li>`).join('')}
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand-light">
+            <p class="font-semibold text-brand">ヒント</p>
+            <p class="mt-1 text-slate-100/80">${step.tip}</p>
+          </div>
+        </div>
+      `;
+
+      stepContent.innerHTML = stepHtml;
+      stepContent.classList.add('opacity-0', 'translate-y-5');
+      requestAnimationFrame(() => {
+        stepContent.classList.remove('opacity-0', 'translate-y-5');
+      });
+
+      prevStepBtn.disabled = currentStep === 0;
+      nextStepBtn.disabled = currentStep === steps.length - 1;
+    };
+
+    const updateStep = (index) => {
+      currentStep = Math.max(0, Math.min(steps.length - 1, index));
+      renderIndicators();
+      renderStep();
+    };
+
+    prevStepBtn.addEventListener('click', () => {
+      if (currentStep > 0) {
+        updateStep(currentStep - 1);
+      }
+    });
+
+    nextStepBtn.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) {
+        updateStep(currentStep + 1);
+      }
+    });
+
+    const renderServers = (servers) => {
+      const serverList = document.getElementById('serverList');
+      const featuredList = document.getElementById('featuredList');
+      const serverCount = document.getElementById('serverCount');
+      const lastUpdated = document.getElementById('lastUpdated');
+
+      const openServers = servers.filter(server => server.registrationStatus === 'open');
+      serverCount.textContent = `${openServers.length}件`;
+
+      const lastReviewDate = servers.reduce((latest, server) => {
+        const current = new Date(server.lastReviewed);
+        return current > latest ? current : latest;
+      }, new Date(0));
+      if (!Number.isNaN(lastReviewDate.getTime())) {
+        lastUpdated.textContent = `${lastReviewDate.getFullYear()}-${String(lastReviewDate.getMonth() + 1).padStart(2, '0')}-${String(lastReviewDate.getDate()).padStart(2, '0')}`;
+      }
+
+      serverList.innerHTML = '';
+      openServers.forEach(server => {
+        const article = document.createElement('article');
+        article.className = 'rounded-3xl border border-white/10 bg-slate-900/60 p-6 flex flex-col gap-4 transition hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10';
+        article.innerHTML = `
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <h3 class="text-xl font-semibold text-white">${server.name}</h3>
+              <p class="text-xs text-slate-400">${server.url.replace('https://', '')}</p>
+            </div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-semibold text-emerald-200">募集中</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">${server.description}</p>
+          <dl class="grid gap-3 text-xs text-slate-300 sm:grid-cols-2">
+            <div>
+              <dt class="text-slate-400">主なテーマ</dt>
+              <dd class="text-white">${server.theme}</dd>
+            </div>
+            <div>
+              <dt class="text-slate-400">主な言語</dt>
+              <dd class="text-white">${server.languages.join(' / ')}</dd>
+            </div>
+            <div>
+              <dt class="text-slate-400">審査</dt>
+              <dd class="flex items-center gap-2 text-white">
+                <span class="inline-flex h-2 w-2 rounded-full ${server.reviewType === 'screening' ? 'bg-amber-400' : 'bg-emerald-400'}"></span>
+                ${server.reviewType === 'screening' ? '応募内容をもとに審査あり' : '即時登録可'}
+              </dd>
+            </div>
+            <div>
+              <dt class="text-slate-400">リレー枠</dt>
+              <dd class="text-white">${server.monthlyRelaySlot}</dd>
+            </div>
+          </dl>
+          <div class="flex flex-wrap gap-2 text-xs">
+            ${server.tags.map(tag => `<span class="inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-slate-200">#${tag}</span>`).join('')}
+          </div>
+          <a href="${server.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-light hover:text-brand">
+            募集詳細を確認する →
+          </a>
+        `;
+        serverList.appendChild(article);
+      });
+
+      featuredList.innerHTML = '';
+      openServers.slice(0, 3).forEach(server => {
+        const li = document.createElement('li');
+        li.className = 'rounded-2xl border border-white/10 bg-white/5 p-4';
+        li.innerHTML = `
+          <p class="text-sm font-semibold text-white">${server.name}</p>
+          <p class="text-xs text-slate-300">${server.theme}</p>
+          <p class="mt-2 text-xs text-slate-400">${server.highlights}</p>
+        `;
+        featuredList.appendChild(li);
+      });
+    };
+
+    fetch('assets/data/virtual-kemomimi-servers.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('データの取得に失敗しました');
+        }
+        return response.json();
+      })
+      .then(data => {
+        renderServers(data.servers);
+        updateStep(0);
+      })
+      .catch(error => {
+        console.error(error);
+        const serverList = document.getElementById('serverList');
+        serverList.innerHTML = '<article class="rounded-3xl border border-red-400/40 bg-red-950/40 p-6 text-sm text-red-200">サーバー情報を読み込めませんでした。時間を置いて再度読み込んでください。</article>';
+        document.getElementById('featuredList').innerHTML = '<li class="rounded-2xl border border-red-400/40 bg-red-950/40 p-4 text-sm text-red-200">サーバー情報の取得に失敗しました。</li>';
+        updateStep(0);
+      });
+  </script>
 </body>
 </html>
