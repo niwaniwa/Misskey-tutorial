@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misskeyスタートガイド | Misskey Compass</title>
+  <meta name="description" content="Misskeyとは何か、何ができるか、どのサーバーを選べばよいかをまとめたスタートガイド。新規登録可能なサーバーを探し、自分に合う場所を見つけよう。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <p class="brand">Misskey Compass</p>
+      <nav class="nav">
+        <a href="#about">Misskeyとは</a>
+        <a href="#features">できること</a>
+        <a href="#servers">サーバー一覧</a>
+        <a href="#flow">始め方</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="cta" href="#servers">登録できるサーバーを探す</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Misskeyを始めるためのコンパス</h1>
+          <p>Misskeyは分散型SNS。あなたの好みに合ったサーバーで、自由にコミュニティを楽しめます。Misskey Compassは、Misskeyの基本を学び、登録可能なサーバーを比較し、安心して第一歩を踏み出すためのガイドです。</p>
+          <div class="hero-actions">
+            <a class="primary" href="#servers">サーバーを比較する</a>
+            <a class="secondary" href="#about">Misskeyについて知る</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <p class="hero-card__title">今週のおすすめ</p>
+          <ul class="hero-card__list">
+            <li>
+              <span class="server-name">misskey.io</span>
+              <span class="server-tag">大型・多言語</span>
+            </li>
+            <li>
+              <span class="server-name">knzk.me</span>
+              <span class="server-tag">日本語・雑談</span>
+            </li>
+            <li>
+              <span class="server-name">mimumedon.com</span>
+              <span class="server-tag">創作・イラスト</span>
+            </li>
+          </ul>
+          <p class="hero-card__note">登録状況はサーバーにより変わります。最新の募集状況を確認しましょう。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>Misskeyとは？</h2>
+        <div class="grid two-column">
+          <div>
+            <p>Misskeyは、ActivityPubという共通プロトコルでつながる分散型SNSです。中央集権的な管理者が存在しないため、さまざまなテーマや雰囲気のサーバー（インスタンス）が独立して運営されています。</p>
+            <p>サーバー同士はゆるやかにつながっており、どこに登録しても他の多くのユーザーと交流できます。自分の興味や価値観に合ったサーバーを選ぶことで、より快適なSNS体験が得られます。</p>
+          </div>
+          <div class="feature-cards">
+            <article class="feature-card">
+              <h3>分散型</h3>
+              <p>サーバーごとにルールや文化が異なります。自分に合った居場所を選べる柔軟性が魅力です。</p>
+            </article>
+            <article class="feature-card">
+              <h3>カスタマイズ自由</h3>
+              <p>テーマ変更やウィジェット配置など、インターフェースを自分好みに整えられます。</p>
+            </article>
+            <article class="feature-card">
+              <h3>オープンソース</h3>
+              <p>Misskeyはオープンソースで開発されています。透明性が高く、世界中の開発者が改善に貢献しています。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section section--alt">
+      <div class="container">
+        <h2>Misskeyでできること</h2>
+        <div class="grid three-column">
+          <article class="highlight">
+            <h3>ノート投稿とリアクション</h3>
+            <p>文字・画像・動画・アンケートなど多彩な投稿が可能。リアクションはカスタム絵文字にも対応しています。</p>
+          </article>
+          <article class="highlight">
+            <h3>タイムラインの使い分け</h3>
+            <p>ホーム、ローカル、ソーシャル、グローバルなどのタイムラインで情報の流れを調整できます。</p>
+          </article>
+          <article class="highlight">
+            <h3>リストとチャンネル</h3>
+            <p>特定ユーザーをまとめたリストやトピックごとのチャンネルで、興味のある話題を逃しません。</p>
+          </article>
+          <article class="highlight">
+            <h3>ドライブ機能</h3>
+            <p>画像やファイルをクラウドのように管理できます。フォルダー整理や公開設定も柔軟です。</p>
+          </article>
+          <article class="highlight">
+            <h3>カスタムテーマ</h3>
+            <p>CSSを直接編集することなく、プリセットやテーマ共有で外観を一瞬で切り替えられます。</p>
+          </article>
+          <article class="highlight">
+            <h3>BotやAPI連携</h3>
+            <p>WebhookやAPIを使って自動投稿や通知連携も実現できます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servers" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>新規登録が可能なサーバー</h2>
+          <p>Misskey Compassに掲載されるのは、現在新規登録受付中のサーバーのみ。運営ポリシーや雰囲気、参加条件を比較しながら選びましょう。</p>
+        </div>
+
+        <div class="filters">
+          <div class="filter-group">
+            <label for="theme-filter">テーマ</label>
+            <select id="theme-filter" name="theme">
+              <option>すべて</option>
+              <option>雑談</option>
+              <option>創作</option>
+              <option>技術</option>
+              <option>初心者歓迎</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="lang-filter">主な言語</label>
+            <select id="lang-filter" name="language">
+              <option>すべて</option>
+              <option>日本語</option>
+              <option>英語</option>
+              <option>多言語</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="scale-filter">規模</label>
+            <select id="scale-filter" name="scale">
+              <option>すべて</option>
+              <option>小規模 (&lt; 1,000人)</option>
+              <option>中規模 (1,000〜10,000人)</option>
+              <option>大規模 (&gt; 10,000人)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="server-table" role="table" aria-label="登録可能なMisskeyサーバー">
+          <div class="server-table__header" role="row">
+            <span role="columnheader">サーバー名</span>
+            <span role="columnheader">テーマ</span>
+            <span role="columnheader">主な言語</span>
+            <span role="columnheader">規模</span>
+            <span role="columnheader">特徴</span>
+            <span role="columnheader">登録状況</span>
+          </div>
+          <div class="server-table__row" role="row">
+            <span role="cell" data-label="サーバー名"><strong>misskey.io</strong></span>
+            <span role="cell" data-label="テーマ">総合・多様</span>
+            <span role="cell" data-label="主な言語">多言語</span>
+            <span role="cell" data-label="規模">大規模</span>
+            <span role="cell" data-label="特徴">公式開発者が運営する最も大きなサーバー。</span>
+            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
+          </div>
+          <div class="server-table__row" role="row">
+            <span role="cell" data-label="サーバー名"><strong>knzk.me</strong></span>
+            <span role="cell" data-label="テーマ">雑談・日常</span>
+            <span role="cell" data-label="主な言語">日本語</span>
+            <span role="cell" data-label="規模">中規模</span>
+            <span role="cell" data-label="特徴">日本語ユーザー中心、初心者歓迎。</span>
+            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
+          </div>
+          <div class="server-table__row" role="row">
+            <span role="cell" data-label="サーバー名"><strong>mimumedon.com</strong></span>
+            <span role="cell" data-label="テーマ">創作・イラスト</span>
+            <span role="cell" data-label="主な言語">日本語</span>
+            <span role="cell" data-label="規模">中規模</span>
+            <span role="cell" data-label="特徴">創作発表に強い、イベント多数。</span>
+            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
+          </div>
+          <div class="server-table__row" role="row">
+            <span role="cell" data-label="サーバー名"><strong>fedibird.com</strong></span>
+            <span role="cell" data-label="テーマ">雑談・技術</span>
+            <span role="cell" data-label="主な言語">日本語</span>
+            <span role="cell" data-label="規模">大規模</span>
+            <span role="cell" data-label="特徴">高機能・コミュニティ主導で改良が活発。</span>
+            <span role="cell" data-label="登録状況"><span class="badge badge--wait">順番待ち</span></span>
+          </div>
+          <div class="server-table__row" role="row">
+            <span role="cell" data-label="サーバー名"><strong>artkey.jp</strong></span>
+            <span role="cell" data-label="テーマ">創作</span>
+            <span role="cell" data-label="主な言語">日本語</span>
+            <span role="cell" data-label="規模">小規模</span>
+            <span role="cell" data-label="特徴">少人数で落ち着いた創作共有。</span>
+            <span role="cell" data-label="登録状況"><span class="badge badge--open">募集中</span></span>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>※ サーバーの募集状況は日々変わります。登録前に必ず公式サイトで最新情報を確認してください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="section section--alt">
+      <div class="container">
+        <h2>登録までの流れ</h2>
+        <ol class="steps">
+          <li>
+            <h3>サーバーを選ぶ</h3>
+            <p>テーマやルール、参加条件をよく読み、安心して参加できるサーバーを選びましょう。</p>
+          </li>
+          <li>
+            <h3>ガイドラインを確認</h3>
+            <p>サーバーごとの利用規約とローカルルールを確認し、禁止事項やマナーを把握します。</p>
+          </li>
+          <li>
+            <h3>アカウントを作成</h3>
+            <p>登録フォームで必要事項を入力します。メール認証が必要な場合もあるので受信トレイを確認してください。</p>
+          </li>
+          <li>
+            <h3>初期設定を整える</h3>
+            <p>プロフィールやアイコン、テーマを設定して、自分の居場所を作りましょう。</p>
+          </li>
+          <li>
+            <h3>コミュニティに挨拶</h3>
+            <p>はじめましてノートを投稿して交流を始めましょう。リアクションで気軽にコミュニケーションできます。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container insights">
+        <div>
+          <h2>サーバー登録ポリシー</h2>
+          <ul>
+            <li>新規登録受付中であることを確認できるサーバーのみ掲載しています。</li>
+            <li>サーバーのルールや管理方針が明記されていること。</li>
+            <li>一定の稼働実績（連続稼働30日以上）があるサーバーを優先します。</li>
+          </ul>
+        </div>
+        <div>
+          <h2>収集データについて</h2>
+          <p>Misskey Compassでは、各サーバーの公式サイトやAPIで公開されている情報のみを使用します。個人情報の取得は行いません。</p>
+          <p>掲載内容に問題がある場合は、各サーバーの運営者からの申請でいつでも変更・削除が可能です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section--alt">
+      <div class="container faq">
+        <h2>よくある質問</h2>
+        <details>
+          <summary>どのサーバーを選んでも他のサーバーのユーザーと話せますか？</summary>
+          <p>はい。MisskeyはActivityPubでつながっているため、基本的にどのサーバーでも他のサーバーのユーザーと相互に交流できます。ただし、一部のサーバーは連合を制限している場合があります。</p>
+        </details>
+        <details>
+          <summary>サーバーの乗り換えはできますか？</summary>
+          <p>可能です。データのエクスポート・インポート機能を使うことで、別サーバーへの移転に対応しています。ただし、相手先サーバーがデータ移行に対応している必要があります。</p>
+        </details>
+        <details>
+          <summary>登録が停止されているサーバーはどうなりますか？</summary>
+          <p>Misskey Compassでは、定期的に登録状況を確認し、受付を停止しているサーバーは自動的に掲載を休止します。募集再開のお知らせがあれば、即座にリストに反映します。</p>
+        </details>
+        <details>
+          <summary>未成年でも利用できますか？</summary>
+          <p>多くのサーバーで利用できますが、年齢制限を設けているところもあります。利用規約を必ず確認してください。</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="brand">Misskey Compass</p>
+        <p class="footer-text">Misskeyを始めたい人のための非公式ガイド。最新情報は各サーバーの告知をご確認ください。</p>
+      </div>
+      <div>
+        <p class="footer-heading">お問い合わせ</p>
+        <ul>
+          <li><a href="mailto:hello@misskey-compass.example">hello@misskey-compass.example</a></li>
+          <li><a href="https://github.com/misskey-compass" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">情報の更新について</p>
+        <p class="footer-text">掲載情報は週次で更新し、登録受付中のサーバーのみを紹介しています。掲載希望はお問い合わせフォームからお寄せください。</p>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2024 Misskey Compass. All rights reserved.</p>
+  </footer>
+</body>
+</html>
