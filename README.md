@@ -19,6 +19,11 @@ Misskeyをこれから始めたい人向けの静的ウェブサイトです。M
 - カラーテーマやレイアウトを変更する場合は、`assets/css/styles.css` のカスタムプロパティ（`--accent` など）を調整すると効率的です。
 - 追加のページを作成する場合は、共通のヘッダー／フッター構造を再利用すると一貫性を保ちやすくなります。
 
+## データ更新の自動化
+
+- `scripts/fetch-relay-data.mjs` は [Virtual Kemomimi Relay](https://relay.virtualkemomimi.net/) から最新のサーバーリストを取得し、`assets/data/virtual-kemomimi-servers.json` を上書きします。
+- `.github/workflows/update-relay-data.yml` が 1 日と 15 日の午前 0 時（UTC）にこのスクリプトを実行し、差分がある場合は Pull Request を自動作成します。手動実行（workflow_dispatch）にも対応しています。
+
 ## ライセンス
 
 このプロジェクトはMITライセンスの下で提供されます。

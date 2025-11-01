@@ -175,7 +175,7 @@
           </div>
           <div class="flex items-center gap-3 text-xs text-slate-300">
             <span class="inline-flex h-3 w-3 rounded-full bg-emerald-400"></span> 募集中
-            <span class="inline-flex h-3 w-3 rounded-full bg-amber-400"></span> 審査あり
+            <span class="inline-flex h-3 w-3 rounded-full bg-amber-400"></span> 招待コード制
           </div>
         </div>
         <div id="serverList" class="grid gap-6 md:grid-cols-2">
@@ -227,13 +227,13 @@
       },
       {
         title: '2. サーバールールと募集条件を確認',
-        summary: '各サーバーの募集要項には、年齢制限や参加条件、審査の有無などが記載されています。',
+        summary: '各サーバーの募集要項には、年齢制限や参加条件、招待コードの入手方法などが記載されています。',
         checklist: [
           '募集ページで禁止事項と推奨事項を確認',
-          '審査フォームがある場合は回答準備をする',
+          '招待コードの申請・受け取り方法を確認する',
           '過去の告知やリレー日程をチェックして雰囲気を掴む'
         ],
-        tip: '「審査あり」のサーバーは、自己紹介や活動実績を整理しておくとスムーズです。'
+        tip: '招待コード制のサーバーでは、自己紹介や活動実績を整理しておくとコードが受け取りやすくなります。'
       },
       {
         title: '3. アカウント登録と初期設定',
@@ -365,10 +365,13 @@
               <dd class="text-white">${server.languages.join(' / ')}</dd>
             </div>
             <div>
-              <dt class="text-slate-400">審査</dt>
-              <dd class="flex items-center gap-2 text-white">
-                <span class="inline-flex h-2 w-2 rounded-full ${server.reviewType === 'screening' ? 'bg-amber-400' : 'bg-emerald-400'}"></span>
-                ${server.reviewType === 'screening' ? '応募内容をもとに審査あり' : '即時登録可'}
+              <dt class="text-slate-400">参加方法</dt>
+              <dd class="flex flex-col gap-1 text-white">
+                <span class="inline-flex items-center gap-2">
+                  <span class="inline-flex h-2 w-2 rounded-full ${server.accessType === 'invite' ? 'bg-amber-400' : 'bg-emerald-400'}"></span>
+                  ${server.accessType === 'invite' ? '招待コードが必要' : '即時登録可'}
+                </span>
+                ${server.accessNote ? `<span class="text-xs text-slate-400">${server.accessNote}</span>` : ''}
               </dd>
             </div>
             <div>
