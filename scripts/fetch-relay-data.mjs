@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const ENDPOINTS = [
+const DEFAULT_ENDPOINTS = [
   'https://relay.virtualkemomimi.net/api/relay.json',
   'https://relay.virtualkemomimi.net/relay.json',
   'https://relay.virtualkemomimi.net/api/instances.json',
@@ -18,6 +18,28 @@ const __dirname = path.dirname(__filename);
 const OUTPUT_PATH = path.resolve(__dirname, '../assets/data/virtual-kemomimi-servers.json');
 
 const DATE_PATTERN = /(\d{4})[-/](\d{1,2})[-/](\d{1,2})/;
+
+function parseArgs(argv) {
+  const args = { source: process.env.RELAY_DATA_SOURCE || null };
+  const tokens = [...argv];
+
+  while (tokens.length > 0) {
+    const token = tokens.shift();
+    if (!token) continue;
+
+    if (token.startsWith('--source=')) {
+      args.source = token.slice('--source='.length);
+      continue;
+    }
+
+    if (token === '--source') {
+      args.source = tokens.shift() || null;
+      continue;
+    }
+  }
+
+  return args;
+}
 
 async function fetchEndpoint(url) {
   const response = await fetch(url, {
@@ -354,11 +376,16 @@ function normalizeServer(record) {
 }
 
 async function main() {
+  const { source } = parseArgs(process.argv.slice(2));
+
   let payload;
   let usedEndpoint = null;
-  for (const endpoint of ENDPOINTS) {
+
+  const endpoints = source ? [source] : DEFAULT_ENDPOINTS;
+
+  for (const endpoint of endpoints) {
     try {
-      const data = await fetchEndpoint(endpoint);
+      const data = await loadSource(endpoint);
       const serverArray = findServerArray(data);
       if (!serverArray) {
         continue;
@@ -391,12 +418,47 @@ async function main() {
 
   const dataset = {
     updatedAt,
-    source: `Virtual Kemomimi Relay (${usedEndpoint})`,
+    source: formatSourceLabel(usedEndpoint),
     servers: normalizedServers
   };
 
   await fs.writeFile(OUTPUT_PATH, `${JSON.stringify(dataset, null, 2)}\n`, 'utf8');
   console.log(`Relay dataset updated with ${normalizedServers.length} entries from ${usedEndpoint}.`);
+}
+
+function formatSourceLabel(source) {
+  if (!source) return 'Virtual Kemomimi Relay';
+  if (/^https?:/i.test(source)) {
+    return `Virtual Kemomimi Relay (${source})`;
+  }
+
+  const absolute = path.isAbsolute(source)
+    ? source
+    : path.resolve(process.cwd(), source);
+
+  if (absolute === OUTPUT_PATH) {
+    return 'Virtual Kemomimi Relay (seed dataset)';
+  }
+
+  return `Virtual Kemomimi Relay (local: ${path.relative(process.cwd(), absolute)})`;
+}
+
+async function loadSource(source) {
+  if (/^https?:/i.test(source)) {
+    return fetchEndpoint(source);
+  }
+
+  const absolutePath = path.isAbsolute(source)
+    ? source
+    : path.resolve(process.cwd(), source);
+
+  const content = await fs.readFile(absolutePath, 'utf8');
+
+  try {
+    return JSON.parse(content);
+  } catch (error) {
+    throw new Error(`Failed to parse JSON from ${absolutePath}: ${error.message}`);
+  }
 }
 
 main().catch((error) => {

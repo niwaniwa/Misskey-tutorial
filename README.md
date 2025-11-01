@@ -22,6 +22,8 @@ Misskeyをこれから始めたい人向けの静的ウェブサイトです。M
 ## データ更新の自動化
 
 - `scripts/fetch-relay-data.mjs` は [Virtual Kemomimi Relay](https://relay.virtualkemomimi.net/) から最新のサーバーリストを取得し、`assets/data/virtual-kemomimi-servers.json` を上書きします。
+  - ネットワークにアクセスできない環境では `node scripts/fetch-relay-data.mjs --source assets/data/virtual-kemomimi-servers.json`
+    のように既存ファイルを入力ソースとして指定できます（`RELAY_DATA_SOURCE` 環境変数でも指定可能）。
 - `.github/workflows/update-relay-data.yml` が 1 日と 15 日の午前 0 時（UTC）にこのスクリプトを実行し、差分がある場合は Pull Request を自動作成します。手動実行（workflow_dispatch）にも対応しています。
 
 ## ライセンス

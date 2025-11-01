@@ -1,50 +1,69 @@
 {
   "updatedAt": "2024-06-28",
-  "source": "Virtual Kemomimi Relay",
+  "source": "Virtual Kemomimi Relay (seed dataset)",
   "servers": [
     {
       "id": "kemomimi-harbor",
       "name": "Kemomimi Harbor",
-      "url": "https://kemomimi-harbor.example",
+      "url": "https://kemomimi-harbor.example/",
       "theme": "バーチャルケモ耳創作・雑談",
-      "languages": ["日本語"],
+      "languages": [
+        "日本語"
+      ],
       "description": "創作活動とゆるい雑談が両立する、ケモ耳リレーの玄関口的サーバー。タグ整理とテンプレート投稿が活発です。",
       "highlights": "初めての方でも参加しやすいウェルカムチャンネルと、毎週開催のアートレビューが人気。",
-      "tags": ["創作", "交流", "イラスト"],
+      "tags": [
+        "創作",
+        "交流",
+        "イラスト"
+      ],
       "registrationStatus": "open",
       "accessType": "open",
       "monthlyRelaySlot": "2024年7月枠",
       "lastReviewed": "2024-06-26"
     },
     {
-      "id": "relay-lounge",
-      "name": "Relay Lounge",
-      "url": "https://relay-lounge.example",
-      "theme": "実況・イベント共有",
-      "languages": ["日本語", "English"],
-      "description": "バーチャルケモ耳リレーの実況とイベント共有に特化したタイムライン。多言語での実況を歓迎しています。",
-      "highlights": "ディレイ視聴者向けの自動ミュートチャンネルなど、便利なカスタム機能が多数。",
-      "tags": ["実況", "多言語", "イベント"],
-      "registrationStatus": "open",
-      "accessType": "invite",
-      "accessNote": "公式Discordで配布される招待コードが必要です。",
-      "monthlyRelaySlot": "2024年7月枠",
-      "lastReviewed": "2024-06-27"
-    },
-    {
       "id": "kemoverse-lab",
       "name": "Kemoverse Lab",
-      "url": "https://kemoverse-lab.example",
+      "url": "https://kemoverse-lab.example/",
       "theme": "技術・配信支援",
-      "languages": ["日本語"],
+      "languages": [
+        "日本語"
+      ],
       "description": "配信レイアウトやボット開発を共有し合う技術者向けサーバー。ケモ耳アバターの研究ログも盛んです。",
       "highlights": "OBSテンプレやミキシングTipsをまとめたノレッジベースが充実。",
-      "tags": ["技術", "配信", "ボット"],
+      "tags": [
+        "技術",
+        "配信",
+        "ボット"
+      ],
       "registrationStatus": "open",
       "accessType": "invite",
-      "accessNote": "技術ブログでの実績を添えて招待コードを申請します。",
       "monthlyRelaySlot": "2024年7月枠",
-      "lastReviewed": "2024-06-25"
+      "lastReviewed": "2024-06-25",
+      "accessNote": "技術ブログでの実績を添えて招待コードを申請します。"
+    },
+    {
+      "id": "relay-lounge",
+      "name": "Relay Lounge",
+      "url": "https://relay-lounge.example/",
+      "theme": "実況・イベント共有",
+      "languages": [
+        "日本語",
+        "English"
+      ],
+      "description": "バーチャルケモ耳リレーの実況とイベント共有に特化したタイムライン。多言語での実況を歓迎しています。",
+      "highlights": "ディレイ視聴者向けの自動ミュートチャンネルなど、便利なカスタム機能が多数。",
+      "tags": [
+        "実況",
+        "多言語",
+        "イベント"
+      ],
+      "registrationStatus": "open",
+      "accessType": "invite",
+      "monthlyRelaySlot": "2024年7月枠",
+      "lastReviewed": "2024-06-27",
+      "accessNote": "公式Discordで配布される招待コードが必要です。"
     }
   ]
 }
