@@ -1,6 +1,7 @@
 {
   "updatedAt": "2024-06-28",
   "source": "Virtual Kemomimi Relay",
+  "sourceUrl": "https://relay.virtualkemomimi.net/",
   "servers": [
     {
       "id": "kemomimi-harbor",
@@ -12,7 +13,7 @@
       "highlights": "初めての方でも参加しやすいウェルカムチャンネルと、毎週開催のアートレビューが人気。",
       "tags": ["創作", "交流", "イラスト"],
       "registrationStatus": "open",
-      "reviewType": "instant",
+      "accessType": "open",
       "monthlyRelaySlot": "2024年7月枠",
       "lastReviewed": "2024-06-26"
     },
@@ -26,7 +27,7 @@
       "highlights": "ディレイ視聴者向けの自動ミュートチャンネルなど、便利なカスタム機能が多数。",
       "tags": ["実況", "多言語", "イベント"],
       "registrationStatus": "open",
-      "reviewType": "screening",
+      "accessType": "invite",
       "monthlyRelaySlot": "2024年7月枠",
       "lastReviewed": "2024-06-27"
     },
@@ -40,7 +41,7 @@
       "highlights": "OBSテンプレやミキシングTipsをまとめたノレッジベースが充実。",
       "tags": ["技術", "配信", "ボット"],
       "registrationStatus": "open",
-      "reviewType": "screening",
+      "accessType": "invite",
       "monthlyRelaySlot": "2024年7月枠",
       "lastReviewed": "2024-06-25"
     }
