@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misskey Compass | 始め方ステップガイド</title>
+  <meta name="description" content="Misskey Compassの始め方ステップガイド。バーチャルケモ耳リレー参加者向けに、登録準備からコミュニティ参加までの手順を丁寧に解説します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              light: '#5EEAD4',
+              DEFAULT: '#2DD4BF',
+              dark: '#14B8A6'
+            }
+          },
+          backgroundImage: {
+            'night-gradient': 'radial-gradient(circle at top, rgba(45,212,191,0.25), transparent 55%), linear-gradient(140deg, #0f172a 0%, #1e1b4b 55%, #020617 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      #stepContent {
+        transition: none !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-night-gradient text-slate-100 font-sans">
+  <header class="sticky top-0 z-20 backdrop-blur border-b border-white/10 bg-slate-950/80">
+    <div class="mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="index.html#top" class="text-xl font-semibold tracking-tight flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/15 text-brand">⛵</span>
+        Misskey Compass
+      </a>
+      <nav class="flex flex-wrap items-center gap-5 text-sm font-medium text-slate-300">
+        <a class="hover:text-white transition" href="index.html#about">Misskeyとは</a>
+        <a class="text-white" href="steps.html">始め方</a>
+        <a class="hover:text-white transition" href="servers.html">サーバー一覧</a>
+        <a class="hover:text-white transition" href="index.html#policy">ポリシー</a>
+      </nav>
+      <a href="servers.html" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-brand/20 transition hover:bg-brand-dark">
+        募集中のサーバーを見る
+      </a>
+    </div>
+  </header>
+
+  <main class="relative">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.25),transparent_45%)]"></div>
+      <div class="mx-auto max-w-5xl px-6 py-16 lg:py-20 relative">
+        <div class="space-y-6">
+          <p class="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-xs font-semibold text-brand uppercase tracking-[0.2em]">Step Guide</p>
+          <h1 class="text-3xl md:text-4xl font-bold leading-tight">Misskeyを始めるための4ステップ</h1>
+          <p class="text-base text-slate-300 leading-relaxed">
+            初めてMisskeyに登録する方が迷わないよう、準備から参加後の動きまでを4つのステップに整理しました。チェックリストを確認しながら、あなたのペースで進めていきましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
+          <div class="lg:w-1/3 space-y-4">
+            <h2 class="text-3xl font-semibold text-white">ステップごとのポイント</h2>
+            <p class="text-sm text-slate-300">各ステップはアニメーション付きで切り替わります。戻りながらチェックしたいポイントを何度でも見直せます。</p>
+            <div class="rounded-3xl border border-brand/30 bg-brand/10 p-4 text-xs text-brand-light">
+              <p>💡 右下のボタンからサーバー一覧へ移動でき、登録先の候補探しにスムーズに移行できます。</p>
+            </div>
+          </div>
+          <div class="lg:w-2/3">
+            <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-xl">
+              <div id="stepContent" class="transition-all duration-300 ease-in-out">
+                <p class="text-sm text-slate-300">読み込み中...</p>
+              </div>
+              <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+                <button id="prevStep" type="button" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/35 disabled:opacity-40 disabled:cursor-not-allowed">
+                  ← 前のステップ
+                </button>
+                <div id="stepIndicators" class="flex items-center gap-2"></div>
+                <button id="nextStep" type="button" class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-brand-dark">
+                  次のステップ →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 bg-slate-950/60 py-16">
+      <div class="mx-auto max-w-4xl px-6 space-y-6 text-center">
+        <h2 class="text-3xl font-semibold text-white">準備ができたらサーバーを選ぼう</h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          各ステップを確認したあとは、最新の募集状況をまとめたサーバー一覧ページへ移動してみましょう。募集枠の有無や審査形式を比較しながら、自分に合った居場所を見つけてください。
+        </p>
+        <a href="servers.html" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 transition hover:bg-brand-dark">
+          サーバー一覧を確認する →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-slate-950/80 py-8 text-center text-xs text-slate-500">
+    <p>&copy; 2024 Misskey Compass. Virtual Kemomimi Relay Edition.</p>
+  </footer>
+
+  <script>
+    const steps = [
+      {
+        title: '1. 自分の活動スタイルを洗い出す',
+        summary: '投稿頻度や好みの話題、交流したい相手像を具体的に整理しましょう。',
+        checklist: [
+          '日常雑談か創作発表か、主な用途を決める',
+          'ケモ耳リレーのどの企画に参加したいか書き出す',
+          '必要なコンテンツ警告や配慮事項があるか確認する'
+        ],
+        tip: 'サーバーのローカルタイムラインを覗いて、雰囲気が合いそうかを事前にチェックするのがおすすめです。'
+      },
+      {
+        title: '2. サーバールールと募集条件を確認',
+        summary: '各サーバーの募集要項には、年齢制限や参加条件、審査の有無などが記載されています。',
+        checklist: [
+          '募集ページで禁止事項と推奨事項を確認',
+          '審査フォームがある場合は回答準備をする',
+          '過去の告知やリレー日程をチェックして雰囲気を掴む'
+        ],
+        tip: '「審査あり」のサーバーは、自己紹介や活動実績を整理しておくとスムーズです。'
+      },
+      {
+        title: '3. アカウント登録と初期設定',
+        summary: 'フォームに必要情報を入力し、メール認証などの初期設定を完了させましょう。',
+        checklist: [
+          'アイコン・バナー・プロフィール文を準備',
+          '二要素認証やパスワードマネージャーを設定',
+          '最初の挨拶ノートで参加表明を行う'
+        ],
+        tip: 'プロフィールには、ケモ耳リレーでの活動予定や得意ジャンルを記載すると歓迎されやすくなります。'
+      },
+      {
+        title: '4. コミュニティと連携する',
+        summary: 'リレー参加者同士のチャンネルやハッシュタグに参加し、継続的な交流を楽しみましょう。',
+        checklist: [
+          'リレー用ハッシュタグやチャンネルをフォロー',
+          '週次イベントやボイスチャットの予定を確認',
+          '他サーバーとのクロス投稿・合作企画に挑戦'
+        ],
+        tip: '困ったときはサーバーのモデレーターに相談したり、Misskey公式ドキュメントを参照してみましょう。'
+      }
+    ];
+
+    const stepContent = document.getElementById('stepContent');
+    const stepIndicators = document.getElementById('stepIndicators');
+    const prevStepBtn = document.getElementById('prevStep');
+    const nextStepBtn = document.getElementById('nextStep');
+    let currentStep = 0;
+
+    stepContent.classList.add('transition-all', 'duration-300', 'ease-in-out');
+
+    const renderIndicators = () => {
+      stepIndicators.innerHTML = '';
+      steps.forEach((_, index) => {
+        const indicator = document.createElement('span');
+        indicator.className = `h-2.5 w-2.5 rounded-full transition ${index === currentStep ? 'bg-brand' : 'bg-white/20'}`;
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.addEventListener('click', () => updateStep(index));
+        indicator.classList.add('cursor-pointer');
+        stepIndicators.appendChild(indicator);
+      });
+    };
+
+    const renderStep = () => {
+      const step = steps[currentStep];
+      const stepHtml = `
+        <div class="space-y-5">
+          <p class="text-xs uppercase tracking-[0.3em] text-brand-light">Step ${currentStep + 1}</p>
+          <h3 class="text-2xl font-semibold text-white">${step.title}</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">${step.summary}</p>
+          <div>
+            <p class="text-xs font-semibold text-slate-200 mb-3">チェックポイント</p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              ${step.checklist.map(item => `<li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-brand"></span><span>${item}</span></li>`).join('')}
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand-light">
+            <p class="font-semibold text-brand">ヒント</p>
+            <p class="mt-1 text-slate-100/80">${step.tip}</p>
+          </div>
+        </div>
+      `;
+
+      stepContent.innerHTML = stepHtml;
+      stepContent.classList.add('opacity-0', 'translate-y-5');
+      requestAnimationFrame(() => {
+        stepContent.classList.remove('opacity-0', 'translate-y-5');
+      });
+
+      prevStepBtn.disabled = currentStep === 0;
+      nextStepBtn.disabled = currentStep === steps.length - 1;
+    };
+
+    const updateStep = (index) => {
+      currentStep = Math.max(0, Math.min(steps.length - 1, index));
+      renderIndicators();
+      renderStep();
+    };
+
+    prevStepBtn.addEventListener('click', () => {
+      if (currentStep > 0) {
+        updateStep(currentStep - 1);
+      }
+    });
+
+    nextStepBtn.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) {
+        updateStep(currentStep + 1);
+      }
+    });
+
+    updateStep(0);
+  </script>
+</body>
+</html>

@@ -48,11 +48,11 @@
       </a>
       <nav class="flex flex-wrap items-center gap-5 text-sm font-medium text-slate-300">
         <a class="hover:text-white transition" href="#about">Misskeyとは</a>
-        <a class="hover:text-white transition" href="#journey">始め方</a>
-        <a class="hover:text-white transition" href="#servers">サーバー一覧</a>
+        <a class="hover:text-white transition" href="steps.html">始め方</a>
+        <a class="hover:text-white transition" href="servers.html">サーバー一覧</a>
         <a class="hover:text-white transition" href="#policy">ポリシー</a>
       </nav>
-      <a href="#servers" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-brand/20 transition hover:bg-brand-dark">
+      <a href="servers.html" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-brand/20 transition hover:bg-brand-dark">
         今すぐ登録できるサーバーを見る
       </a>
     </div>
@@ -72,11 +72,11 @@
               Misskey Compassは、バーチャルケモ耳リレーに参加しているインスタンスの中から、<span class="text-brand-light font-semibold">今月新規登録を受け付けているサーバー</span>だけをピックアップ。Misskeyの基礎理解から、登録までの流れ、候補サーバーの比較までをこのページ一つで完結させます。
             </p>
             <div class="flex flex-wrap gap-4">
-              <a href="#journey" class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20">
+              <a href="steps.html" class="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20">
                 手順を確認する
                 <span aria-hidden="true">→</span>
               </a>
-              <a href="#servers" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-white/40">
+              <a href="servers.html" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-white/40">
                 サーバー一覧へジャンプ
               </a>
             </div>
@@ -136,52 +136,29 @@
       </div>
     </section>
 
-    <section id="journey" class="py-20">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
-          <div class="lg:w-1/3 space-y-4">
-            <h2 class="text-3xl font-semibold text-white">Misskeyを始めるステップ</h2>
-            <p class="text-sm text-slate-300">それぞれのステップを順番に確認しながら、あなたに合うサーバーを見つけて登録まで進めましょう。各ステップはアニメーション付きで切り替わります。</p>
-            <div class="rounded-3xl border border-brand/30 bg-brand/10 p-4 text-xs text-brand-light">
-              <p>💡 次へボタンで進むと、チェックリストとヒントが更新されます。戻って何度でも確認できます。</p>
-            </div>
-          </div>
-          <div class="lg:w-2/3">
-            <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-xl">
-              <div id="stepContent" class="transition-all duration-300 ease-in-out">
-                <p class="text-sm text-slate-300">読み込み中...</p>
-              </div>
-              <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
-                <button id="prevStep" type="button" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/35 disabled:opacity-40 disabled:cursor-not-allowed">
-                  ← 前のステップ
-                </button>
-                <div id="stepIndicators" class="flex items-center gap-2"></div>
-                <button id="nextStep" type="button" class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-brand-dark">
-                  次のステップ →
-                </button>
-              </div>
-            </div>
+    <section class="border-t border-white/10 bg-slate-950/60 py-20">
+      <div class="mx-auto max-w-5xl px-6 grid gap-10 md:grid-cols-[1.1fr_0.9fr] items-center">
+        <div class="space-y-6">
+          <h2 class="text-3xl font-semibold text-white">次の一歩は専用ページで</h2>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Misskey Compassでは、<span class="font-semibold text-white">始め方ガイド</span>と<span class="font-semibold text-white">サーバー一覧</span>をそれぞれ独立したページとして用意しました。じっくりステップを確認してから、最新の募集状況をチェックできます。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="steps.html" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 transition hover:bg-brand-dark">
+              ステップガイドを見る →
+            </a>
+            <a href="servers.html" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-slate-100 transition hover:border-white/40">
+              募集中のサーバーへ →
+            </a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="servers" class="border-t border-white/10 bg-slate-950/60 py-20">
-      <div class="mx-auto max-w-6xl px-6 space-y-10">
-        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div class="space-y-3">
-            <h2 class="text-3xl font-semibold text-white">今月登録できるサーバー</h2>
-            <p class="text-sm text-slate-300">バーチャルケモ耳リレーに掲載されているサーバーのうち、<span class="font-semibold text-white">今月新規登録フォームが開いている</span>ものだけを掲載しています。各サーバーの募集状況は変化するため、リンク先で最新情報をご確認ください。</p>
-          </div>
-          <div class="flex items-center gap-3 text-xs text-slate-300">
-            <span class="inline-flex h-3 w-3 rounded-full bg-emerald-400"></span> 募集中
-            <span class="inline-flex h-3 w-3 rounded-full bg-amber-400"></span> 審査あり
-          </div>
-        </div>
-        <div id="serverList" class="grid gap-6 md:grid-cols-2">
-          <article class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
-            <p class="text-sm text-slate-300">サーバー情報を読み込み中です...</p>
-          </article>
+        <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-8 space-y-4 shadow-xl">
+          <h3 class="text-xl font-semibold text-white">ページの活用ヒント</h3>
+          <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside">
+            <li>ステップガイドでは、初めての方向けに順を追ったチェックリストを掲載しています。</li>
+            <li>サーバー一覧ページは月次更新。募集状況や審査の有無もまとめています。</li>
+            <li>気になるサーバーが見つかったら、公式募集ページで最新情報を再確認しましょう。</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -214,123 +191,11 @@
   </footer>
 
   <script>
-    const steps = [
-      {
-        title: '1. 自分の活動スタイルを洗い出す',
-        summary: '投稿頻度や好みの話題、交流したい相手像を具体的に整理しましょう。',
-        checklist: [
-          '日常雑談か創作発表か、主な用途を決める',
-          'ケモ耳リレーのどの企画に参加したいか書き出す',
-          '必要なコンテンツ警告や配慮事項があるか確認する'
-        ],
-        tip: 'サーバーのローカルタイムラインを覗いて、雰囲気が合いそうかを事前にチェックするのがおすすめです。'
-      },
-      {
-        title: '2. サーバールールと募集条件を確認',
-        summary: '各サーバーの募集要項には、年齢制限や参加条件、審査の有無などが記載されています。',
-        checklist: [
-          '募集ページで禁止事項と推奨事項を確認',
-          '審査フォームがある場合は回答準備をする',
-          '過去の告知やリレー日程をチェックして雰囲気を掴む'
-        ],
-        tip: '「審査あり」のサーバーは、自己紹介や活動実績を整理しておくとスムーズです。'
-      },
-      {
-        title: '3. アカウント登録と初期設定',
-        summary: 'フォームに必要情報を入力し、メール認証などの初期設定を完了させましょう。',
-        checklist: [
-          'アイコン・バナー・プロフィール文を準備',
-          '二要素認証やパスワードマネージャーを設定',
-          '最初の挨拶ノートで参加表明を行う'
-        ],
-        tip: 'プロフィールには、ケモ耳リレーでの活動予定や得意ジャンルを記載すると歓迎されやすくなります。'
-      },
-      {
-        title: '4. コミュニティと連携する',
-        summary: 'リレー参加者同士のチャンネルやハッシュタグに参加し、継続的な交流を楽しみましょう。',
-        checklist: [
-          'リレー用ハッシュタグやチャンネルをフォロー',
-          '週次イベントやボイスチャットの予定を確認',
-          '他サーバーとのクロス投稿・合作企画に挑戦'
-        ],
-        tip: '困ったときはサーバーのモデレーターに相談したり、Misskey公式ドキュメントを参照してみましょう。'
-      }
-    ];
+    const featuredList = document.getElementById('featuredList');
+    const serverCount = document.getElementById('serverCount');
+    const lastUpdated = document.getElementById('lastUpdated');
 
-    const stepContent = document.getElementById('stepContent');
-    const stepIndicators = document.getElementById('stepIndicators');
-    const prevStepBtn = document.getElementById('prevStep');
-    const nextStepBtn = document.getElementById('nextStep');
-    let currentStep = 0;
-
-    stepContent.classList.add('transition-all', 'duration-300', 'ease-in-out');
-
-    const renderIndicators = () => {
-      stepIndicators.innerHTML = '';
-      steps.forEach((_, index) => {
-        const indicator = document.createElement('span');
-        indicator.className = `h-2.5 w-2.5 rounded-full transition ${index === currentStep ? 'bg-brand' : 'bg-white/20'}`;
-        indicator.setAttribute('aria-hidden', 'true');
-        indicator.addEventListener('click', () => updateStep(index));
-        indicator.classList.add('cursor-pointer');
-        stepIndicators.appendChild(indicator);
-      });
-    };
-
-    const renderStep = () => {
-      const step = steps[currentStep];
-      const stepHtml = `
-        <div class="space-y-5">
-          <p class="text-xs uppercase tracking-[0.3em] text-brand-light">Step ${currentStep + 1}</p>
-          <h3 class="text-2xl font-semibold text-white">${step.title}</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">${step.summary}</p>
-          <div>
-            <p class="text-xs font-semibold text-slate-200 mb-3">チェックポイント</p>
-            <ul class="space-y-2 text-sm text-slate-300">
-              ${step.checklist.map(item => `<li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-brand"></span><span>${item}</span></li>`).join('')}
-            </ul>
-          </div>
-          <div class="rounded-2xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand-light">
-            <p class="font-semibold text-brand">ヒント</p>
-            <p class="mt-1 text-slate-100/80">${step.tip}</p>
-          </div>
-        </div>
-      `;
-
-      stepContent.innerHTML = stepHtml;
-      stepContent.classList.add('opacity-0', 'translate-y-5');
-      requestAnimationFrame(() => {
-        stepContent.classList.remove('opacity-0', 'translate-y-5');
-      });
-
-      prevStepBtn.disabled = currentStep === 0;
-      nextStepBtn.disabled = currentStep === steps.length - 1;
-    };
-
-    const updateStep = (index) => {
-      currentStep = Math.max(0, Math.min(steps.length - 1, index));
-      renderIndicators();
-      renderStep();
-    };
-
-    prevStepBtn.addEventListener('click', () => {
-      if (currentStep > 0) {
-        updateStep(currentStep - 1);
-      }
-    });
-
-    nextStepBtn.addEventListener('click', () => {
-      if (currentStep < steps.length - 1) {
-        updateStep(currentStep + 1);
-      }
-    });
-
-    const renderServers = (servers) => {
-      const serverList = document.getElementById('serverList');
-      const featuredList = document.getElementById('featuredList');
-      const serverCount = document.getElementById('serverCount');
-      const lastUpdated = document.getElementById('lastUpdated');
-
+    const renderFeaturedServers = (servers) => {
       const openServers = servers.filter(server => server.registrationStatus === 'open');
       serverCount.textContent = `${openServers.length}件`;
 
@@ -341,50 +206,6 @@
       if (!Number.isNaN(lastReviewDate.getTime())) {
         lastUpdated.textContent = `${lastReviewDate.getFullYear()}-${String(lastReviewDate.getMonth() + 1).padStart(2, '0')}-${String(lastReviewDate.getDate()).padStart(2, '0')}`;
       }
-
-      serverList.innerHTML = '';
-      openServers.forEach(server => {
-        const article = document.createElement('article');
-        article.className = 'rounded-3xl border border-white/10 bg-slate-900/60 p-6 flex flex-col gap-4 transition hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10';
-        article.innerHTML = `
-          <div class="flex items-center justify-between gap-3">
-            <div>
-              <h3 class="text-xl font-semibold text-white">${server.name}</h3>
-              <p class="text-xs text-slate-400">${server.url.replace('https://', '')}</p>
-            </div>
-            <span class="inline-flex items-center gap-2 rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-semibold text-emerald-200">募集中</span>
-          </div>
-          <p class="text-sm text-slate-300 leading-relaxed">${server.description}</p>
-          <dl class="grid gap-3 text-xs text-slate-300 sm:grid-cols-2">
-            <div>
-              <dt class="text-slate-400">主なテーマ</dt>
-              <dd class="text-white">${server.theme}</dd>
-            </div>
-            <div>
-              <dt class="text-slate-400">主な言語</dt>
-              <dd class="text-white">${server.languages.join(' / ')}</dd>
-            </div>
-            <div>
-              <dt class="text-slate-400">審査</dt>
-              <dd class="flex items-center gap-2 text-white">
-                <span class="inline-flex h-2 w-2 rounded-full ${server.reviewType === 'screening' ? 'bg-amber-400' : 'bg-emerald-400'}"></span>
-                ${server.reviewType === 'screening' ? '応募内容をもとに審査あり' : '即時登録可'}
-              </dd>
-            </div>
-            <div>
-              <dt class="text-slate-400">リレー枠</dt>
-              <dd class="text-white">${server.monthlyRelaySlot}</dd>
-            </div>
-          </dl>
-          <div class="flex flex-wrap gap-2 text-xs">
-            ${server.tags.map(tag => `<span class="inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-slate-200">#${tag}</span>`).join('')}
-          </div>
-          <a href="${server.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-light hover:text-brand">
-            募集詳細を確認する →
-          </a>
-        `;
-        serverList.appendChild(article);
-      });
 
       featuredList.innerHTML = '';
       openServers.slice(0, 3).forEach(server => {
@@ -407,15 +228,11 @@
         return response.json();
       })
       .then(data => {
-        renderServers(data.servers);
-        updateStep(0);
+        renderFeaturedServers(data.servers);
       })
       .catch(error => {
         console.error(error);
-        const serverList = document.getElementById('serverList');
-        serverList.innerHTML = '<article class="rounded-3xl border border-red-400/40 bg-red-950/40 p-6 text-sm text-red-200">サーバー情報を読み込めませんでした。時間を置いて再度読み込んでください。</article>';
-        document.getElementById('featuredList').innerHTML = '<li class="rounded-2xl border border-red-400/40 bg-red-950/40 p-4 text-sm text-red-200">サーバー情報の取得に失敗しました。</li>';
-        updateStep(0);
+        featuredList.innerHTML = '<li class="rounded-2xl border border-red-400/40 bg-red-950/40 p-4 text-sm text-red-200">サーバー情報の取得に失敗しました。</li>';
       });
   </script>
 </body>

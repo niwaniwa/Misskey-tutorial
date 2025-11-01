@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misskey Compass | サーバー一覧</title>
+  <meta name="description" content="バーチャルケモ耳リレー参加者向けのMisskeyサーバー一覧。募集中のインスタンスと募集枠、審査の有無をまとめて確認できます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              light: '#5EEAD4',
+              DEFAULT: '#2DD4BF',
+              dark: '#14B8A6'
+            }
+          },
+          backgroundImage: {
+            'night-gradient': 'radial-gradient(circle at top, rgba(45,212,191,0.25), transparent 55%), linear-gradient(140deg, #0f172a 0%, #1e1b4b 55%, #020617 100%)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-night-gradient text-slate-100 font-sans">
+  <header class="sticky top-0 z-20 backdrop-blur border-b border-white/10 bg-slate-950/80">
+    <div class="mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="index.html#top" class="text-xl font-semibold tracking-tight flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/15 text-brand">⛵</span>
+        Misskey Compass
+      </a>
+      <nav class="flex flex-wrap items-center gap-5 text-sm font-medium text-slate-300">
+        <a class="hover:text-white transition" href="index.html#about">Misskeyとは</a>
+        <a class="hover:text-white transition" href="steps.html">始め方</a>
+        <a class="text-white" href="servers.html">サーバー一覧</a>
+        <a class="hover:text-white transition" href="index.html#policy">ポリシー</a>
+      </nav>
+      <a href="steps.html" class="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-brand/20 transition hover:bg-brand-dark">
+        ステップガイドを見る
+      </a>
+    </div>
+  </header>
+
+  <main class="relative">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.25),transparent_45%)]"></div>
+      <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20 relative space-y-10">
+        <div class="space-y-6">
+          <p class="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-xs font-semibold text-brand uppercase tracking-[0.2em]">Server Listing</p>
+          <h1 class="text-3xl md:text-4xl font-bold leading-tight">バーチャルケモ耳リレーの募集中サーバー</h1>
+          <p class="text-base text-slate-300 leading-relaxed">
+            現在新規登録を受け付けているMisskeyサーバーをピックアップしています。募集枠や審査方法はサーバーによって異なるため、詳細ページで最新情報を確認してください。
+          </p>
+        </div>
+        <dl class="grid gap-6 sm:grid-cols-3 text-sm text-slate-300">
+          <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <dt class="font-semibold text-white">掲載サーバー数</dt>
+            <dd id="serverCount" class="mt-2 text-2xl font-semibold text-brand-light">--</dd>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <dt class="font-semibold text-white">最終チェック日</dt>
+            <dd id="lastUpdated" class="mt-2 text-2xl font-semibold text-brand-light">--</dd>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <dt class="font-semibold text-white">情報ソース</dt>
+            <dd class="mt-2 text-sm text-slate-200">Virtual Kemomimi Relay</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 bg-slate-950/60 py-16">
+      <div class="mx-auto max-w-6xl px-6 space-y-10">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="space-y-3">
+            <h2 class="text-3xl font-semibold text-white">今月登録できるサーバー</h2>
+            <p class="text-sm text-slate-300">バーチャルケモ耳リレーに掲載されているサーバーのうち、<span class="font-semibold text-white">今月新規登録フォームが開いている</span>ものだけを掲載しています。リンク先で募集停止となっている場合は、近日中に更新が反映されます。</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-slate-300">
+            <span class="inline-flex h-3 w-3 rounded-full bg-emerald-400"></span> 募集中
+            <span class="inline-flex h-3 w-3 rounded-full bg-amber-400"></span> 審査あり
+          </div>
+        </div>
+        <div id="serverList" class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-sm text-slate-300">サーバー情報を読み込み中です...</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-slate-950/80 py-8 text-center text-xs text-slate-500">
+    <p>&copy; 2024 Misskey Compass. Virtual Kemomimi Relay Edition.</p>
+  </footer>
+
+  <script>
+    const serverList = document.getElementById('serverList');
+    const serverCount = document.getElementById('serverCount');
+    const lastUpdated = document.getElementById('lastUpdated');
+
+    const createServerCard = (server) => {
+      const article = document.createElement('article');
+      article.className = 'rounded-3xl border border-white/10 bg-slate-900/60 p-6 flex flex-col gap-4 transition hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10';
+      article.innerHTML = `
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xl font-semibold text-white">${server.name}</h3>
+            <p class="text-xs text-slate-400">${server.url.replace('https://', '')}</p>
+          </div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-semibold text-emerald-200">募集中</span>
+        </div>
+        <p class="text-sm text-slate-300 leading-relaxed">${server.description}</p>
+        <dl class="grid gap-3 text-xs text-slate-300 sm:grid-cols-2">
+          <div>
+            <dt class="text-slate-400">主なテーマ</dt>
+            <dd class="text-white">${server.theme}</dd>
+          </div>
+          <div>
+            <dt class="text-slate-400">主な言語</dt>
+            <dd class="text-white">${server.languages.join(' / ')}</dd>
+          </div>
+          <div>
+            <dt class="text-slate-400">審査</dt>
+            <dd class="flex items-center gap-2 text-white">
+              <span class="inline-flex h-2 w-2 rounded-full ${server.reviewType === 'screening' ? 'bg-amber-400' : 'bg-emerald-400'}"></span>
+              ${server.reviewType === 'screening' ? '応募内容をもとに審査あり' : '即時登録可'}
+            </dd>
+          </div>
+          <div>
+            <dt class="text-slate-400">リレー枠</dt>
+            <dd class="text-white">${server.monthlyRelaySlot}</dd>
+          </div>
+        </dl>
+        <div class="flex flex-wrap gap-2 text-xs">
+          ${server.tags.map(tag => `<span class=\"inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-slate-200\">#${tag}</span>`).join('')}
+        </div>
+        <a href="${server.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-light hover:text-brand">
+          募集詳細を確認する →
+        </a>
+      `;
+      return article;
+    };
+
+    const renderServers = (servers) => {
+      const openServers = servers.filter(server => server.registrationStatus === 'open');
+      serverCount.textContent = `${openServers.length}件`;
+
+      const lastReviewDate = servers.reduce((latest, server) => {
+        const current = new Date(server.lastReviewed);
+        return current > latest ? current : latest;
+      }, new Date(0));
+      if (!Number.isNaN(lastReviewDate.getTime())) {
+        lastUpdated.textContent = `${lastReviewDate.getFullYear()}-${String(lastReviewDate.getMonth() + 1).padStart(2, '0')}-${String(lastReviewDate.getDate()).padStart(2, '0')}`;
+      }
+
+      serverList.innerHTML = '';
+      if (openServers.length === 0) {
+        serverList.innerHTML = '<article class="rounded-3xl border border-white/10 bg-slate-900/60 p-6 text-sm text-slate-300">現在募集中のサーバーはありません。再度ご確認ください。</article>';
+        return;
+      }
+
+      openServers.forEach(server => {
+        serverList.appendChild(createServerCard(server));
+      });
+    };
+
+    fetch('assets/data/virtual-kemomimi-servers.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('データの取得に失敗しました');
+        }
+        return response.json();
+      })
+      .then(data => {
+        renderServers(data.servers);
+      })
+      .catch(error => {
+        console.error(error);
+        serverList.innerHTML = '<article class="rounded-3xl border border-red-400/40 bg-red-950/40 p-6 text-sm text-red-200">サーバー情報を読み込めませんでした。時間を置いて再度読み込んでください。</article>';
+      });
+  </script>
+</body>
+</html>
